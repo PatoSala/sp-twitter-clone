@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar</title>
+    <link rel="stylesheet" href="../styles/loginPage.css"/>
+    <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        
+    <div class="login-screen">
+        
+        <div class="back-arrow-container">
+            <a href="../index.html">
+                <i class="fa-solid fa-xmark fa-xl" style="color: black"></i>
+            </a>
+
+            <i class="fa-brands fa-twitter fa-2xl" style="color: rgb(29, 155, 240)"></i>
+
+            <div></div>
+        </div>
+
+        <h1>Crear una cuenta</h1>
+
+        <form class="login-form">
+            <input type="text" placeholder="Nombre de usuario" value="" id="username"/>
+            <input type="email" placeholder="Correo electrónico" value="" id="email"/>
+            <input type="password" placeholder="Contraseña" value=""/>
+            <input type="password" placeholder="Confirmar contraseña" value=""/>
+            <button type="button" onclick="logIn()">Registrarse</button>
+            <p>Ya tienes cuenta? <a href="./login.html" style="color: rgb(29, 155, 240); cursor: pointer;">Iniciar sesión</a></p>
+        </form>
+    </div>
+
+    <script src="../scripts/apiKey.js"></script>
+    <script src="../scripts/login.js"></script>
+</body>
+</html>

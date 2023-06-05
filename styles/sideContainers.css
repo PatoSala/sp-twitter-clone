@@ -1,0 +1,10 @@
+.side-containers {
+    min-width: 300px;
+    background-color: white;
+}
+
+.side-containers.left {
+}
+
+.side-containers.right {
+}

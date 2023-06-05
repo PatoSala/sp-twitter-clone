@@ -1,0 +1,76 @@
+.tweets-list {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 500px;
+}
+
+.tweets-list .spinner {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tweet-container {
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 10px;
+    transition: 0.2s;
+    border-bottom: 1px solid rgb(239, 243, 244);
+}
+
+.tweet-container:hover {
+    transition: 0.2s;
+    background-color: rgb(239, 243, 244);
+}
+
+.tweet-container h4 {
+    margin: 0px;
+}
+
+.tweet-container a {
+    height: 48px;
+}
+
+.tweet-owner-bubble {
+    width: 48px;
+    height: 48px;
+    background-color: rgb(207, 217, 222, 1);
+    border-radius: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.tweet-body {
+    margin-top: 5px;
+    word-break: break-word;
+    margin-right: 20px;
+}
+
+.tweet-content {
+    width: 100%
+}
+
+.tweet-content ul {
+    display: none;
+    list-style: none;
+    font-size: 13px;
+    justify-content: space-evenly;
+}
+
+.tweet-actions ul li{
+    margin-right: 30px;
+}
+
+.tweet-actions ul .liked {
+    color: #f91880
+}
+

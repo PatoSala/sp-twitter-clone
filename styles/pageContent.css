@@ -1,0 +1,12 @@
+.page-content {
+    width: 100%;
+    max-width: 600px;
+    height: max-content;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-left: 1px solid rgb(239, 243, 244);
+    border-right: 1px solid rgb(239, 243, 244);
+    overflow-x: hidden;
+}

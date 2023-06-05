@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>loading</title>
+  <link href="../styles/profilePage.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../styles/pageContent.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/tweetsList.css"/>
+  <link rel="stylesheet" href="../styles/profileInfo.css">
+  <link rel="stylesheet" href="../styles/navLinks.css"/>
+  <link rel="stylesheet" href="../styles/searchBar.css">
+  <link rel="stylesheet" href="../styles/sideContainers.css">
+  <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="side-containers left">
+
+    <div class="nav-links">
+        <a href="../index.html">
+            <div class="list-item-container">
+                <i class="fa-brands fa-twitter fa-xl" style="color: rgb(29, 155, 240)"></i>
+            </div>
+        </a>
+    
+        <a href="../index.html">
+            <div class="list-item-container">
+                <i class="fa-solid fa-hashtag fa-lg"></i>
+                <p class="link-text">Inicio</p>
+            </div>
+        </a>
+    
+        <div class="list-item-container" onclick="navigateToProfile()">
+            <i class="fa-regular fa-user fa-lg"></i>
+            <p class="link-text">Perfil</p>
+        </div>
+
+        <a href="">
+            <div class="list-item-container">
+                <i class="fa-regular fa-bookmark fa-xl"></i>
+                <p class="link-text">Guardados</p>
+            </div>
+        </a>
+
+        <div class="list-item-container" onclick="logOut()">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 fa-lg"></i>
+            <p class="link-text">Cerrar Sesión</p>
+        </div>
+
+        <div class="list-item-container">
+            <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
+            <p class="link-text">Iniciar Sesion</p>
+        </div>
+    
+        <a href="./newPost.html">
+            <div class="list-item-container" style="background-color: rgb(29, 155, 240); color: white">
+                <i class="fa-solid fa-feather-pointed fa-lg"></i>
+                <p class="link-text">Twittear</p>
+            </div>
+        </a>
+    </div>
+    
+  </div>
+
+  <div class="page-content" style="width: 35%;">
+
+    <div class="header">
+        <div class="arrow-container">
+            <a href="../index.html">
+                <i class="fa-solid fa-arrow-left fa-sm"></i>
+            </a>
+        </div>
+        <h1></h1>
+    </div>
+
+    <div class="profile-info-container">
+        <div class="cover-photo-container"></div>
+        <div class="profile-picture-container"></div>
+        <div class="profile-data">
+            <h2></h2>
+            <p class="profile-bio"></p>
+        </div>
+    </div>
+
+    <ul class="profile-sections">
+        <li>
+            Tweets
+        </li>
+    </ul>
+
+
+    <div class="tweets-list">
+
+        <div class="spinner">
+            <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="side-containers right">
+    <div class="search-bar-container">
+        <input type="text" placeholder="Buscar en Twitter" class="search-input"/>
+    </div>
+</div>
+
+  <script src="../scripts/apiKey.js"></script>
+  <script src="../scripts/session.js"></script>
+  <script src="../scripts/navBarLinks.js"></script>
+  <script src="../scripts/profile.js"></script>
+  <script src="../scripts/fetchTwitts.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>

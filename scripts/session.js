@@ -1,0 +1,1 @@
+const session = JSON.parse(sessionStorage.getItem('session'));
