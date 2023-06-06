@@ -61,17 +61,20 @@
 }
 
 .tweet-content ul {
-    display: none;
+    display: flex;
     list-style: none;
+    margin: 0;
     font-size: 13px;
     justify-content: space-evenly;
 }
 
-.tweet-actions ul li{
-    margin-right: 30px;
+.tweet-content ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tweet-actions ul .liked {
-    color: #f91880
+.liked {
+    color: rgb(249, 24, 128);
 }
 

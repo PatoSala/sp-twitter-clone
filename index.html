@@ -113,6 +113,8 @@
   <script src="./scripts/tweetItemComponent.js"></script>
   <script src="./scripts/fetchTweets.js"></script>
   <script src="./scripts/fetchAllUsers.js"></script>
+  <script src="./scripts/fetchLikes.js"></script>
+  <script src="./scripts/likeTweet.js"></script>
   <script src="./scripts/renderTweets.js"></script>
   <script src="./scripts/createTweet.js"></script>
 
@@ -121,6 +123,7 @@
     window.addEventListener('load', async  e => {
         await fetchAllUsers();
         await fetchTweets();
+        await fetchLikes();
         renderTweets(tweets, users);
     });
 

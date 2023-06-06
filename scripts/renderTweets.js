@@ -23,8 +23,22 @@ function renderTweets(tweets, users) {
 
     tweetsList.innerHTML = ``   // clean innerHtml
 
-    for (let i = 0; i < array.length; i++) {
-        tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i]);
+    if (array.length > 0) {
+        for (let i = 0; i < array.length; i++) {
+            let isLiked = false;
+
+            if (session !== null) {
+                for (let j = 0; j < likes.length; j++) {
+                    if (likes[j].tweet_id === array[i].id && likes[j].user_id === session.user_id) {
+                        isLiked = true;
+                    }
+                }
+            }
+
+            tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i], isLiked);
+        }
+    } else {
+        tweetsList.innerHTML = `<p style="align-self: center">No se encontraron tweets</p>`
     }
 
 }

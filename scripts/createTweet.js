@@ -38,6 +38,8 @@ async function createTweet() {
                 await fetchAllUsers();
                 // fetch tweets
                 await fetchTweets();
+                // fetch likes relations
+                await fetchLikes();
                 // re render tweets
                 renderTweets(tweets, users);
             } else {
