@@ -60,7 +60,7 @@ function likeTweet(htmlElement) {
         if (likeBtn.classList.contains('liked')) {
 
             // visually update
-            likeBtn.children[0].classList.replace('fa-solid', 'fa-regular');
+            likeBtn.children[0].children[0].classList.replace('fa-solid', 'fa-regular');
             likeBtn.children[1].innerText = (totalLikes - 1).toString();
             likeBtn.classList.remove('liked');
     
@@ -69,7 +69,7 @@ function likeTweet(htmlElement) {
             removeLikeRelation(tweetId);
             // update likes table
         } else {
-            likeBtn.children[0].classList.replace('fa-regular', 'fa-solid');
+            likeBtn.children[0].children[0].classList.replace('fa-regular', 'fa-solid');
             likeBtn.children[1].innerText = (totalLikes + 1).toString();
             likeBtn.classList.add('liked');
 

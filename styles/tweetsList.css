@@ -54,6 +54,7 @@
     margin-top: 5px;
     word-break: break-word;
     margin-right: 20px;
+    margin: 0;
 }
 
 .tweet-content {
@@ -64,6 +65,7 @@
     display: flex;
     list-style: none;
     margin: 0;
+    margin-top: 12px;
     font-size: 13px;
     justify-content: space-evenly;
 }
