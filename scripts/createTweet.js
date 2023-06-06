@@ -7,12 +7,12 @@ window.addEventListener('load', (e) => {
 
 async function createTweet() {
     let tweetContent = document.querySelector('.text-field');
-    console.log(tweetContent.value);
 
     if (tweetContent.value === undefined) {
         console.log('Error, value is undefined');
+    } else if (tweetContent.value === '') {
+        tweetContent.style.border = '1px solid red'
     } else {
-        console.log(tweetContent.value);
         let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts';
 
 
@@ -29,11 +29,17 @@ async function createTweet() {
             }])
         });
 
-        console.log(response);
+        tweetContent.value = '';    // empty textarea value
+
         if (response.status === 201) {
             if (location.href.includes("index.html")) {
                 dialog.close();
-                reloadTweets();
+                // fecthusers
+                await fetchAllUsers();
+                // fetch tweets
+                await fetchTweets();
+                // re render tweets
+                renderTweets(tweets, users);
             } else {
                 location.href = "../index.html"
             }

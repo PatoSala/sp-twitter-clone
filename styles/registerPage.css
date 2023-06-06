@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Flex&display=swap');
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Roboto Flex';
+    font-size: 31px;
+}
+
+.login-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.back-arrow-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form input {
+    width: 438px;
+    height: 60px;
+    margin-top: 12px;
+    border: 1px solid rgb(207, 217, 222);
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.login-form input:focus {
+    outline-color: rgb(29, 155, 240);
+}
+
+.login-form button {
+    cursor: pointer;
+    margin-top: 100px;
+    height: 60px;
+    border-radius: 100px;
+    border-width: 0px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000
+}
+
+.login-form button:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.login-form p, a {
+    display: inline;
+    width: max-content;
+    font-family: Roboto flex;
+    font-weight: 100;
+}
+
+.errors {
+    font-family: 'Roboto Flex';
+    color: red;
+    font-weight: bold;
+}

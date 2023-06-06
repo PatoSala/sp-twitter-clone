@@ -15,7 +15,7 @@ async function logIn() {
     });
 
     let jsonResponse = await response.json();
-    console.log(jsonResponse);
+
     if (jsonResponse.length === 0) {
         console.log('Error: ' + jsonResponse);
     } else {

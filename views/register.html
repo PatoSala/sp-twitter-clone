@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar</title>
-    <link rel="stylesheet" href="../styles/loginPage.css"/>
+    <link rel="stylesheet" href="../styles/registerPage.css"/>
     <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -24,17 +24,19 @@
 
         <h1>Crear una cuenta</h1>
 
+        <p class="errors"></p>
+
         <form class="login-form">
             <input type="text" placeholder="Nombre de usuario" value="" id="username"/>
             <input type="email" placeholder="Correo electrónico" value="" id="email"/>
-            <input type="password" placeholder="Contraseña" value=""/>
-            <input type="password" placeholder="Confirmar contraseña" value=""/>
-            <button type="button" onclick="logIn()">Registrarse</button>
+            <input type="password" placeholder="Contraseña" value="" id="password"/>
+            <input type="password" placeholder="Confirmar contraseña" value="" id="confirm-password"/>
+            <button type="button" onclick="resgister()">Registrarse</button>
             <p>Ya tienes cuenta? <a href="./login.html" style="color: rgb(29, 155, 240); cursor: pointer;">Iniciar sesión</a></p>
         </form>
     </div>
 
     <script src="../scripts/apiKey.js"></script>
-    <script src="../scripts/login.js"></script>
+    <script src="../scripts/register.js"></script>
 </body>
 </html>
