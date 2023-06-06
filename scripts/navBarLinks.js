@@ -1,4 +1,16 @@
 let navLinks = document.querySelector(".nav-links");
+let dialog = document.querySelector(".new-tweet-dialog");
+
+
+
+function openNewTweetDialog() {
+    dialog.showModal()
+    document.querySelector(".dialog-profile-bubble").innerHTML = `<img src="${session.avatar_url}" width="100%"/>`
+}
+
+function closeNewTweetDialog() {
+    dialog.close()
+}
 
 function logOut() {
     sessionStorage.removeItem("session");

@@ -1,6 +1,8 @@
 .side-containers {
     min-width: 300px;
     background-color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .side-containers.left {

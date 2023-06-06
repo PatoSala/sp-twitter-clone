@@ -1,6 +1,8 @@
 
 window.addEventListener('load', (e) => {
-    document.querySelector('.tweet-owner-bubble').innerHTML = `<img src="${session.avatar_url}" width="100%"/>`
+    if (document.querySelector('.tweet-owner-bubble') != undefined) {
+        document.querySelector('.tweet-owner-bubble').innerHTML = `<img src="${session.avatar_url}" width="100%"/>`
+    }
 })
 
 async function createTweet() {
@@ -29,7 +31,12 @@ async function createTweet() {
 
         console.log(response);
         if (response.status === 201) {
-            location.href = '../index.html';
+            if (location.href.includes("index.html")) {
+                dialog.close();
+                reloadTweets();
+            } else {
+                location.href = "../index.html"
+            }
         }
     }
 }

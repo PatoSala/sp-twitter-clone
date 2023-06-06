@@ -1,0 +1,81 @@
+.new-tweet-dialog {
+    margin-top: 30px;
+    width: 600px;
+    background-color: white;
+    border: 0px;
+    border-radius: 16px;
+    outline: none;
+    padding: 0px;
+}
+
+.dialog-header, .dialog-footer {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+}
+
+.close-dialog-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.close-dialog-btn:hover {
+    background-color: rgb(239, 243, 244);
+}
+
+.compose-new-twitt-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+.compose-new-twitt-container textarea {
+    width: 90%;
+    height: 160px;
+    resize: none;
+    border-width: 0px;
+    min-height: 100px;
+    font-size: 17px;
+}
+
+.compose-new-twitt-container textarea:focus {
+    outline: 0;
+}
+
+.dialog-footer {
+    flex-direction: row-reverse;
+}
+
+.dialog-footer button {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 38px;
+    border: 0px;
+    border-radius: 100px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.text-field-container {
+    display: flex
+}
+ 
+.dialog-profile-bubble {
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    background-color: rgb(207, 217, 222, 1);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}

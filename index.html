@@ -12,10 +12,29 @@
   <link rel="stylesheet" href="./styles/navLinks.css"/>
   <link rel="stylesheet" href="./styles/sideContainers.css">
   <link rel="stylesheet" href="./styles/pageContent.css">
+  <link rel="stylesheet" href="./styles/main.css">
   <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+
+    <dialog class="new-tweet-dialog">
+        <div class="dialog-header">
+            <div class="close-dialog-btn" onclick="closeNewTweetDialog()">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+            </div>
+        </div>
+
+        <div class="compose-new-twitt-container">
+                <div class="dialog-profile-bubble">
+                </div>
+                <textarea class="text-field" placeholder="En que estás pensando?"></textarea>
+        </div>
+
+        <div class="dialog-footer">
+            <button type="button" class="post-tweet-btn" onclick="createTweet()">Publicar</button>
+        </div>
+    </dialog>
 
   <div class="side-containers left">
 
@@ -58,12 +77,10 @@
             </div>
         </a>
     
-        <a href="./views/newPost.html">
-            <div class="list-item-container" style="background-color: rgb(29, 155, 240); color: white">
-                <i class="fa-solid fa-feather-pointed fa-lg"></i>
-                <p class="link-text">Twittear</p>
-            </div>
-        </a>
+        <div class="list-item-container" style="background-color: rgb(29, 155, 240); color: white" onclick="openNewTweetDialog()">
+            <i class="fa-solid fa-feather-pointed fa-lg"></i>
+            <p class="link-text">Twittear</p>
+        </div>
     </div>
     
   </div>
@@ -94,6 +111,7 @@
   <script src="./scripts/session.js"></script>
   <script src="./scripts/navBarLinks.js"></script>
   <script src="./scripts/fetchTwitts.js"></script>
+  <script src="./scripts/createTweet.js"></script>
 
   <!--
   This script places a badge on your repl's full-browser view back to your repl's cover
