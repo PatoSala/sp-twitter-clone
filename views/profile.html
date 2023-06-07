@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>loading</title>
@@ -90,7 +91,10 @@
                 <i class="fa-solid fa-arrow-left fa-sm"></i>
             </a>
         </div>
-        <h1></h1>
+        <div class="header-content">
+            <h1></h1>
+            <span></span>
+        </div>
     </div>
 
     <div style="height: 50px"></div>
@@ -159,6 +163,7 @@
 
         await fetchAllUsers();
         await fetchTweets();
+        document.querySelector('.header-content').children[1].innerText = `${tweets.length} Tweets`
         await fetchLikes();
         renderTweets(tweets, users);
     })
