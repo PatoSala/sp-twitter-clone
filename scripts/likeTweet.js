@@ -63,6 +63,9 @@ function likeTweet(htmlElement) {
             likeBtn.children[0].children[0].classList.replace('fa-solid', 'fa-regular');
             likeBtn.children[1].innerText = (totalLikes - 1).toString();
             likeBtn.classList.remove('liked');
+            if ((totalLikes - 1) == 0) {
+                likeBtn.children[1].style.display = 'none'
+            }
     
             // update total likes at tweets table
             updateLikes(tweetId, totalLikes - 1);
@@ -72,9 +75,13 @@ function likeTweet(htmlElement) {
             likeBtn.children[0].children[0].classList.replace('fa-regular', 'fa-solid');
             likeBtn.children[1].innerText = (totalLikes + 1).toString();
             likeBtn.classList.add('liked');
+            if ((totalLikes + 1) > 0) {
+                likeBtn.children[1].style.display = 'inline'
+            }
 
             updateLikes(tweetId, totalLikes + 1);
             addLikeRelation(tweetId);
+            
         }
     }
     

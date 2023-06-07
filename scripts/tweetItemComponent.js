@@ -13,11 +13,11 @@ function tweetItemComponent(tweet, isLiked) {
                     <p class="tweet-body">${tweet.body}</p>
                     <div class="tweet-actions">
                         <ul>
-                            <li class="tweet-likes ${isLiked ? 'liked' : ''}" id="tweetId-${tweet.id}" onclick="likeTweet(this)">
-                                <div class="icon-container" style="width: 34.75px; height: 34.75px; position: absolute; display: flex; align-items: center; justify-content: center">
+                            <li class="like-btn ${isLiked ? 'liked' : ''}" id="tweetId-${tweet.id}" onclick="likeTweet(this)">
+                                <div class="icon-container">
                                     <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart fa-lg"></i>
                                 </div>
-                                <p style="position: relative; left: 25px; font-size: 13px; margin: 0">${tweet.likes}</p>
+                                <p style="position: relative; left: 25px; font-size: 13px; margin: 0; display: ${tweet.likes > 0 ? 'inline' : 'none'}">${tweet.likes}</p>
                             </li>
 
                             <li>
@@ -25,6 +25,11 @@ function tweetItemComponent(tweet, isLiked) {
                             </li>
                         </ul>
                     </div>
+
+                    <div class="options-btn">
+                        <i class="fa-solid fa-ellipsis fa-sm"></i>
+                    </div>
+
                 </div>
             </div>
         `
