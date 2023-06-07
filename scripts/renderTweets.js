@@ -17,8 +17,6 @@ function renderTweets(tweets, users) {
         }
     }
 
-    console.log(array);
-
     spinner.style.display = 'none';
 
     tweetsList.innerHTML = ``   // clean innerHtml

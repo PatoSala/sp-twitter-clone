@@ -127,3 +127,9 @@
     background-color: rgb(29, 155, 240, 0.1);
 }
 
+.creation-date {
+    font-weight: 100;
+    font-size: 15px;
+    color: rgb(83, 100, 113);
+}
+

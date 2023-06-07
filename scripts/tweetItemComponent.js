@@ -9,7 +9,7 @@ function tweetItemComponent(tweet, isLiked) {
                     </div>
                 </a>
                 <div class="tweet-content">
-                    <h4 class="tweet-owner">${tweet.owner_metadata.username}</h4>
+                    <h4 class="tweet-owner">${tweet.owner_metadata.username} <span class="creation-date">${tweet.created_at.slice(0, 10)}</span></h4>
                     <p class="tweet-body">${tweet.body}</p>
                     <div class="tweet-actions">
                         <ul>
