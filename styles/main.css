@@ -1,1 +1,18 @@
 @import "./newTweetDialog.css";
+
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto Flex', sans-serif;
+ }
+  
+ h1 {
+    font-size: 20px;
+ }
+
+ body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+ }
