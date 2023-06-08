@@ -10,7 +10,8 @@ function renderTweets(tweets, users) {
                 let formattedTweet = tweets[i];
                 formattedTweet.owner_metadata = {
                     username: users[j].username,
-                    avatar_url: users[j].avatar_url
+                    avatar_url: users[j].avatar_url,
+                    verified: users[j].verified
                 } 
                 array.unshift(formattedTweet);
             }

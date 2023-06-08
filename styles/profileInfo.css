@@ -38,6 +38,15 @@
     padding-right: 10px;
 }
 
+.profile-data .profile-username {
+    display: flex;
+    align-items: center;
+}
+
+.profile-username h2 {
+    font-size: 20px
+}
+
 .profile-data .profile-bio {
     color: rgb(207, 217, 222, 1);
 }

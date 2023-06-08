@@ -13,6 +13,5 @@ async function fetchLikes() {
     });
 
     let jsonResponse = await response.json();
-    console.log(jsonResponse);
     return likes = jsonResponse;
 }

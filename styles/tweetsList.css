@@ -29,12 +29,19 @@
     background-color: rgb(0, 0, 0, 0.03);
 }
 
+.tweet-container a {
+    height: 48px;
+}
+
 .tweet-container h4 {
     margin: 0px;
 }
 
-.tweet-container a {
-    height: 48px;
+.creation-date {
+    font-weight: 100;
+    font-size: 15px;
+    color: rgb(83, 100, 113);
+    margin-left: 5px;
 }
 
 .tweet-owner-bubble {
@@ -51,6 +58,19 @@
     box-sizing: border-box;
 }
 
+.tweet-content {
+    width: 100%
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+}
+
+.twitter-blue-check {
+    margin-left: 2px
+}
+
 .tweet-body {
     margin-top: 5px;
     word-break: break-word;
@@ -58,11 +78,7 @@
     margin: 0;
 }
 
-.tweet-content {
-    width: 100%
-}
-
-.tweet-content ul {
+.tweet-actions ul {
     min-height: 15px;
     display: flex;
     list-style: none;
@@ -72,7 +88,7 @@
     justify-content: space-evenly;
 }
 
-.tweet-content ul li {
+.tweet-actions ul li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,18 +151,21 @@
     display: unset;
 }
 
-.drop-down-container {
+.drop-down-backdrop.closed {
+    display: none;
+}
+
+.drop-down-backdrop {
     position: fixed;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     z-index: 15;
-    background-color: green;
     cursor: default;
 }
 
-.options-btn-drop-menu {
+.drop-down-menu {
     position: absolute;
     width: 334.58px;
     z-index: 10;
@@ -155,26 +174,26 @@
     border-radius: 12px;
     box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
     z-index: 20;
+    overflow: hidden;
 }
 
-.options-btn-drop-menu ul {
-    margin: 0;
-}
+
+
 
 .drop-down-item {
     padding: 12px 16px;
     display: flex;
     align-items: center;
+    font-weight: 500;
+    color: black;
+}
+
+.drop-down-item:hover {
+    background-color: rgb(255, 255, 255, 03);
+    color: black;
 }
 
 .drop-down-icon {
     width: 18.75px;
     padding-right: 12px
 }
-
-.creation-date {
-    font-weight: 100;
-    font-size: 15px;
-    color: rgb(83, 100, 113);
-}
-

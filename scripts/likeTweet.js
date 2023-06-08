@@ -57,14 +57,14 @@ function likeTweet(htmlElement) {
     let likeBtn = document.querySelector(`#${htmlElement.id}`)
     
     if (session !== null) {
-        if (likeBtn.classList.contains('liked')) {
+        if (htmlElement.classList.contains('liked')) {
 
             // visually update
-            likeBtn.children[0].children[0].classList.replace('fa-solid', 'fa-regular');
-            likeBtn.children[1].innerText = (totalLikes - 1).toString();
-            likeBtn.classList.remove('liked');
+            htmlElement.children[0].children[0].classList.replace('fa-solid', 'fa-regular');
+            htmlElement.children[1].innerText = (totalLikes - 1).toString();
+            htmlElement.classList.remove('liked');
             if ((totalLikes - 1) == 0) {
-                likeBtn.children[1].style.display = 'none'
+                htmlElement.children[1].style.display = 'none'
             }
     
             // update total likes at tweets table
@@ -72,11 +72,11 @@ function likeTweet(htmlElement) {
             removeLikeRelation(tweetId);
             // update likes table
         } else {
-            likeBtn.children[0].children[0].classList.replace('fa-regular', 'fa-solid');
-            likeBtn.children[1].innerText = (totalLikes + 1).toString();
-            likeBtn.classList.add('liked');
+            htmlElement.children[0].children[0].classList.replace('fa-regular', 'fa-solid');
+            htmlElement.children[1].innerText = (totalLikes + 1).toString();
+            htmlElement.classList.add('liked');
             if ((totalLikes + 1) > 0) {
-                likeBtn.children[1].style.display = 'inline'
+                htmlElement.children[1].style.display = 'inline'
             }
 
             updateLikes(tweetId, totalLikes + 1);
