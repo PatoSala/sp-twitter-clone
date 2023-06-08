@@ -197,3 +197,7 @@
     width: 18.75px;
     padding-right: 12px
 }
+
+.hidden {
+    display: none;
+}

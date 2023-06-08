@@ -44,7 +44,7 @@ function tweetItemComponent(tweet, isLiked) {
 
     return (
         `
-            <div class="tweet-container" id="tweetId-${tweet.id}">
+            <div class="tweet-container ${tweet.strikes === 3 ? 'hidden' : ''}" id="tweetId-${tweet.id}">
                 <a href="./views/profile.html?userId=${tweet.owner_id}">
                     <div class="tweet-owner-bubble">
                         <img src="${tweet.owner_metadata.avatar_url}" width="100%"/>
