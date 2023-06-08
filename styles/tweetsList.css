@@ -127,6 +127,51 @@
     background-color: rgb(29, 155, 240, 0.1);
 }
 
+.options-btn .closed {
+    display: none;
+}
+
+.options-btn .open {
+    display: unset;
+}
+
+.drop-down-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    background-color: green;
+    cursor: default;
+}
+
+.options-btn-drop-menu {
+    position: absolute;
+    width: 334.58px;
+    z-index: 10;
+    background-color: white;
+    right: 0px;
+    border-radius: 12px;
+    box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+    z-index: 20;
+}
+
+.options-btn-drop-menu ul {
+    margin: 0;
+}
+
+.drop-down-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.drop-down-icon {
+    width: 18.75px;
+    padding-right: 12px
+}
+
 .creation-date {
     font-weight: 100;
     font-size: 15px;
