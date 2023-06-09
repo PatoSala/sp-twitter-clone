@@ -45,6 +45,8 @@ footer {
 @media only screen and (max-width: 600px) {
 
     footer {
+        padding-top: 10px ;
+        padding-bottom: 10px;
         height: 32px;
     }
 
