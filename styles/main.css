@@ -1,9 +1,10 @@
+@import url('https://fonts.cdnfonts.com/css/chirp-2');
 @import "./newTweetDialog.css";
 
 html {
     height: 100%;
     width: 100%;
-    font-family: 'Roboto Flex', sans-serif;
+    font-family: 'Chirp', sans-serif;
  }
   
  h1 {

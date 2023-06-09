@@ -6,7 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Inicio</title>
-  <link href="./styles/homePage.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="./styles/header.css">
   <link rel="stylesheet" href="./styles/tweetsList.css"/>
   <link rel="stylesheet" href="./styles/searchBar.css"/>
@@ -14,6 +13,7 @@
   <link rel="stylesheet" href="./styles/sideContainers.css">
   <link rel="stylesheet" href="./styles/pageContent.css">
   <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/footer.css">
   <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
 </head>
 
@@ -109,6 +109,18 @@
         <input type="text" placeholder="Buscar en Twitter" class="search-input"/>
     </div>
 </div>
+
+<footer>
+    <div class="footer-txt-container">
+        <span id="1">Don't miss what's happening</span>
+        <span id="2" style="font-size: 15px; font-weight: lighter">People on Twitter are the first to know</span>
+    </div>
+
+    <div class="footer-btns-container">
+        <span class="footer-btn" onclick="navigate('login')">Log in</span>
+        <span class="footer-btn" id="sign-up" onclick="navigate('signup')">Sign up</span>
+    </div>
+</footer>
   
   <script src="./scripts/apiKey.js"></script>
   <script src="./scripts/session.js"></script>
@@ -121,9 +133,16 @@
   <script src="./scripts/renderTweets.js"></script>
   <script src="./scripts/createTweet.js"></script>
 
+  <script src="./scripts/navigation.js"></script>
+
   <script>
 
     window.addEventListener('load', async  e => {
+
+        if (session === null) {
+            document.querySelector('footer').style.display = 'flex';
+        }
+
         await fetchAllUsers();
         await fetchTweets();
         await fetchLikes();

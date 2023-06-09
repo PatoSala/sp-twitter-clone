@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../styles/searchBar.css">
   <link rel="stylesheet" href="../styles/sideContainers.css">
   <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/footer.css">
   <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
 </head>
 
@@ -104,7 +105,8 @@
         <div class="profile-picture-container"></div>
 
         <div class="profile-buttons">
-            <span class="follow-button">Seguir</span>
+            <span class="follow-btn" onclick="followAccount()">Seguir</span>
+            <span class="unfollow-btn" onclick="unfollowAccount()">Siguiendo</span>
         </div>
 
         <div class="profile-data">
@@ -142,6 +144,18 @@
     </div>
 </div>
 
+<footer>
+    <div class="footer-txt-container">
+        <span id="1">Don't miss what's happening</span>
+        <span id="2" style="font-size: 15px; font-weight: lighter">People on Twitter are the first to know</span>
+    </div>
+
+    <div class="footer-btns-container">
+        <span class="footer-btn" onclick="navigate('login')">Log in</span>
+        <span class="footer-btn" id="sign-up" onclick="navigate('signup')">Sign up</span>
+    </div>
+</footer>
+
   <script src="../scripts/apiKey.js"></script>
   <script src="../scripts/session.js"></script>
 
@@ -157,18 +171,65 @@
   <script src="../scripts/fetchLikes.js"></script>
   <script src="../scripts/renderTweets.js"></script>
 
+  <script src="../scripts/fetchFollowersRelations.js"></script>
+  <script src="../scripts/followAccount.js"></script>
+
+  <script src="../scripts/navigation.js"></script>
+
 
   <script>
     let queryString = location.search;
     let params = new URLSearchParams(queryString);
     let userId = params.get("userId");
+    let userData;
+    let userFollowers;  // keep track of users followers
+
+    let followBtn = document.querySelector('.follow-btn');
+    let unfollowBtn = document.querySelector('.unfollow-btn');
+    let followingCountUi = document.querySelector('.following-followers-container').children[0];
+    let followersCountUi = document.querySelector('.following-followers-container').children[1];
 
     if (session !== null && userId === session.user_id) {
-        document.querySelector('.follow-button').style.display = 'none';
+        document.querySelector('.follow-btn').style.display = 'none';
+        document.querySelector('.unfollow-btn').style.display = 'none';
+    }
+
+    async function followAccount() {
+        if (session !== null) {
+            userFollowers++
+            await updateFollowersCount(userData[0].user_id, userFollowers);
+            await addFollowRelation(session.user_id, userData[0].user_id);
+
+            // change button ui
+            followBtn.style.display = 'none';
+            unfollowBtn.style.display = 'flex';
+            // update followers ui
+            followersCountUi.innerText = `${userFollowers} Seguidores`
+        }
+    }
+
+    async function unfollowAccount() {
+        if (session !== null) {
+            userFollowers--
+            await updateFollowersCount(userData[0].user_id, userFollowers);
+            await removeFollowRelation(session.user_id, userData[0].user_id);
+
+            // change button ui
+            followBtn.style.display = 'flex';
+            unfollowBtn.style.display = 'none';
+            // update followers ui
+            followersCountUi.innerText = `${userFollowers} Seguidores`
+        }
     }
 
     window.addEventListener("load", async e => {
-        let userData = await fetchUserData(userId);
+
+        if (session === null) {
+            document.querySelector('footer').style.display = 'flex';
+        }
+
+        userData = await fetchUserData(userId);
+        userFollowers = userData[0].followers_count;
         console.log(userData);
 
         if (userData.length > 0) {
@@ -180,14 +241,27 @@
                 document.querySelector('.twitter-profile-check').innerHTML = `<svg style="width: 20px" class="twitter-check-sm" viewBox="0 0 22 22" aria-label="Cuenta verificada" role="img" data-testid="icon-verified"><g><path fill="rgb(29, 155, 240)" d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"></path></g></svg>`
             }
             document.querySelector('.following-followers-container').children[0].innerText = `${userData[0].following_count} Siguiendo`
-            document.querySelector('.following-followers-container').children[1].innerText = `${userData[0].followers_count} Seguidores`
+            document.querySelector('.following-followers-container').children[1].innerText = `${userFollowers} Seguidores`
         }
 
         await fetchAllUsers();
         await fetchTweets();
+        await fetchFollowersRelations();
         document.querySelector('.header-content').children[1].innerText = `${tweets.length} Tweets`
         await fetchLikes();
+        await fetchFollowersRelations();
         renderTweets(tweets, users);
+
+        // check if logged user follows account
+        if (session.user_id !== userId) {   // if we aren't watching our own profile
+            for (let i = 0; i < followers.length; i++) {
+                if (followers[i].follower_id === session.user_id && followers[i].followee_id === userId) {
+                    return unfollowBtn.style.display = 'flex';
+                }
+            }
+
+            return followBtn.style.display = 'flex';
+        }
     })
   </script>
   <!--

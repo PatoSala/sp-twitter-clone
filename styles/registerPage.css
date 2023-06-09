@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Flex&display=swap');
-
 body {
     height: 100vh;
     display: flex;
@@ -8,7 +6,6 @@ body {
 }
 
 h1 {
-    font-family: 'Roboto Flex';
     font-size: 31px;
 }
 
@@ -65,7 +62,6 @@ h1 {
 .login-form p, a {
     display: inline;
     width: max-content;
-    font-family: Roboto flex;
     font-weight: 100;
 }
 
