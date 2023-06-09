@@ -22,15 +22,15 @@ function logOut() {
 }
 
 if (session == undefined) {
-    navLinks.children[2].style.display = "none"
-    navLinks.children[3].style.display = "none"
-    navLinks.children[4].style.display = "none"
-    navLinks.children[navLinks.children.length - 1].style.display = "none"
+    navLinks.children[2].style.display = "none"     // profile
+    navLinks.children[3].style.display = "none"     // saved
+    navLinks.children[4].style.display = "none"     // close session
+    navLinks.children[navLinks.children.length - 1].style.display = "none"  // tweet button
 }
 
-if (session) {
+/* if (session) {
     navLinks.children[navLinks.children.length - 2].style.display = "none"
-}
+} */
 
 function navigateToProfile() {
     let userId = session.user_id
