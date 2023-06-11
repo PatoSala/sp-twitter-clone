@@ -1,0 +1,169 @@
+.edit-profile-btn {
+    display: none;
+    height: 34px;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(39, 44, 48);
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid rgb(207, 217, 222);
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.edit-profile-btn:hover {
+    background-color: rgb(15, 20, 25, 0.1);
+}
+
+.edit-profile-dialog {
+    max-width: 600px;
+    width: 100%;
+    border: 0px;
+    outline: none;
+    margin: 0 auto;
+    margin-top: 150px;
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.edit-profile-header {
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+    position: relative;
+    left: 7;
+}
+
+.edit-profile-header .left {
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile-header .left .close-btn {
+    width:34px;
+    height:34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    position: absolute;
+    left: 7px;
+    cursor: pointer;
+}
+
+.edit-profile-header .left .close-btn:hover {
+    background-color: rgb(15, 20, 25, 0.1);
+}
+
+.edit-profile-header .left h2 {
+    margin: 0;
+    margin-left: 49px;
+    font-size: 20px;
+}
+
+.edit-profile-header .save-changes-btn {
+    display: flex;
+    height: 34px;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.edit-profile-header .save-changes-btn:hover {
+    background-color: rgb(39, 44, 48);
+}
+
+.edit-banner-container {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.banner-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.3);
+    position: absolute;
+}
+
+.add-img-icon {
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    backdrop-filter: blur(4px);
+    background-color: rgba(15, 20, 25, 0.75);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-img-icon:hover {
+    background-color: rgba(39, 44, 48, 0.75);
+}
+
+.edit-profile-avatar {
+    background-size: cover;
+    width: 112px;
+    height: 112px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 200px;
+    left: 15px;
+    z-index: 2;
+}
+
+.edit-profile-info {
+    margin-top: 66px;
+    padding: 0 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.edit-profile-info label {
+    margin: 12px 0px;
+    padding: 0px 8px;
+    padding-top: 8px;
+    width: 100%;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    border-radius: 4px
+}
+
+.edit-profile-info span {
+    font-size: 13px;
+    color: rgb(83, 100, 113);
+}
+
+.edit-profile-info input, textarea {
+    outline: none;
+    border: 0px;
+    min-height: 20px;
+    font-size: 17px;
+    resize: none;
+}

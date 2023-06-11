@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../styles/sideContainers.css">
   <link rel="stylesheet" href="../styles/main.css">
   <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="../styles/editProfileDialog.css">
   <script src="https://kit.fontawesome.com/a7f33ed485.js" crossorigin="anonymous"></script>
 </head>
 
@@ -35,6 +36,43 @@
 
         <div class="dialog-footer">
             <button type="button" class="post-tweet-btn" onclick="createTweet()">Publicar</button>
+        </div>
+    </dialog>
+
+    <dialog class="edit-profile-dialog">
+        <div class="edit-profile-header">
+            <div class="left">
+                <div class="close-btn" onclick="closeEditProfileDialog()">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 20px"><g><path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path></g></svg>
+                </div>
+
+                <h2>Editar Perfil</h2>
+            </div>
+
+            <span class="save-changes-btn">Guardar</span>
+        </div>
+
+        <div class="edit-profile-avatar"></div>
+
+        <div class="edit-banner-container">
+            <div class="banner-overlay"></div>
+            <div class="add-img-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" width="22px"><g><path fill="white" d="M9.697 3H11v2h-.697l-3 2H5c-.276 0-.5.224-.5.5v11c0 .276.224.5.5.5h14c.276 0 .5-.224.5-.5V10h2v8.5c0 1.381-1.119 2.5-2.5 2.5H5c-1.381 0-2.5-1.119-2.5-2.5v-11C2.5 6.119 3.619 5 5 5h1.697l3-2zM12 10.5c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm-4 2c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4zM17 2c0 1.657-1.343 3-3 3v1c1.657 0 3 1.343 3 3h1c0-1.657 1.343-3 3-3V5c-1.657 0-3-1.343-3-3h-1z"></path></g></svg>
+            </div>
+        </div>
+    
+
+        <div class="edit-profile-info">
+            <label class="edit-username" for="username">
+                <span class="input-title">Nombre</span>
+                <input type="text" maxlength="50" id="username"value=""/>
+            </label>
+
+            <label class="edit-bio" for="bio" style="height: 96px;">
+                <span class="input-title">Biografía</span>
+                <textarea type="text" maxlength="160" id="bio"value="" style="height: 100%"></textarea>
+            </label>
+
         </div>
     </dialog>
 
@@ -107,11 +145,12 @@
         <div class="profile-buttons">
             <span class="follow-btn" onclick="followAccount()">Seguir</span>
             <span class="unfollow-btn" onclick="unfollowAccount()">Siguiendo</span>
+            <span class="edit-profile-btn" onclick="openEditProfileDialog()">Editar perfil</span>
         </div>
 
         <div class="profile-data">
             <div class="profile-username">
-                <h2></h2>
+                <h2 class="username"></h2>
                 <span class="twitter-profile-check"></span>
             </div>
             <p class="profile-bio"></p>
@@ -175,6 +214,7 @@
   <script src="../scripts/followAccount.js"></script>
 
   <script src="../scripts/navigation.js"></script>
+  <script src="../scripts/editProfile.js"></script>
 
 
   <script>
@@ -193,6 +233,12 @@
         document.querySelector('.follow-btn').style.display = 'none';
         document.querySelector('.unfollow-btn').style.display = 'none';
     }
+
+    
+    if (session !== null && session.user_id === userId) {
+        editProfileBtn.style.display = 'flex';
+    }
+
 
     async function followAccount() {
         if (session !== null) {
@@ -235,7 +281,7 @@
         if (userData.length > 0) {
             document.querySelector('h1').innerHTML = userData[0].username;
             document.querySelector('.profile-picture-container').innerHTML = `<img src="${userData[0].avatar_url}" width="100px"/>`
-            document.querySelector('h2').innerHTML = userData[0].username;
+            document.querySelector('.username').innerHTML = userData[0].username;
             document.querySelector('title').innerText = userData[0].username;
             document.querySelector('.cover-photo-container').style.backgroundImage = `url(${userData[0].banner_url})`
             if (userData[0].verified) {
