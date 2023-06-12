@@ -26,6 +26,7 @@ if (session == undefined) {
     navLinks.children[3].style.display = "none"     // saved
     navLinks.children[4].style.display = "none"     // close session
     navLinks.children[navLinks.children.length - 1].style.display = "none"  // tweet button
+    document.querySelector('.mobile-tweet-btn').style.display = 'none';
 }
 
 /* if (session) {

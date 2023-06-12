@@ -1,13 +1,17 @@
 a {
     text-decoration: none;
     color: unset;
+    width: max-content;
  }
 
  .nav-links {
-    margin-top: 20px;
-    min-width: 259px;
-    position: fixed;
-
+   margin-top: 2px;
+   width: 259px;
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 16px;
  }
   
   .list-item-container {
@@ -18,7 +22,6 @@ a {
     width: max-content;
     padding-right: 20px;
     padding-left: 20px;
-    margin-bottom: 10px;
     height: 50px;
     border-radius: 100px;
     transition: 0.5s;
@@ -31,4 +34,33 @@ a {
 
  .link-text {
     margin-left: 25px
+ }
+
+ @media only screen and (max-width: 1024) {
+   .nav-links {
+      width: 150px;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+
+   .nav-links {
+      width: 88px;
+      align-items: center;
+   }
+
+   .list-item-container {
+      padding: 12px;
+      margin: 0px;
+      box-sizing: border-box;
+   }
+
+   .list-item-container a {
+      display: inline;
+   }
+
+    .link-text {
+      display: none;
+    }
+
  }

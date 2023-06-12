@@ -1,6 +1,7 @@
 .new-tweet-dialog {
     margin-top: 30px;
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
     background-color: white;
     border: 0px;
     border-radius: 16px;
@@ -16,6 +17,7 @@
 }
 
 .close-dialog-btn {
+    cursor: pointer;
     width: 34px;
     height: 34px;
     display: flex;

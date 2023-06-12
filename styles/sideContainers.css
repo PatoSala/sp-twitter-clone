@@ -7,8 +7,21 @@
 
 .side-containers.left {
     align-items: flex-end;
+    min-width: 88px
 }
 
 .side-containers.right {
     align-items: flex-start;
 }
+
+@media only screen and (max-width: 600px) {
+    .left {
+      align-items: center;
+    }
+ }
+
+ @media only screen and (max-width: 400px) {
+   .side-containers{
+    display: none;
+   }
+ }
