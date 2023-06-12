@@ -34,3 +34,10 @@
     right: 45px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1168px) {
+
+    .search-bar-container {
+      display: none;
+    }
+ }
