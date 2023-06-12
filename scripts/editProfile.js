@@ -13,6 +13,66 @@ let avatarUrl = session.avatar_url;
 let username = session.username;
 let bio = session.bio;
 
+async function saveChanges() {
+    await uploadNewBannerPicure();
+    await uploadNewAvatarPicure();
+}
+
+async function uploadNewAvatarPicure() {
+    let url = `https://serysjohsewrcxkonnum.supabase.co/storage/v1/object/avatars/${session.user_id}`;
+
+    let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'multipart/form-data',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        },
+        body: JSON.stringify({
+            path: avatarUrl
+        })
+    })
+    console.log(response)
+}
+
+async function uploadNewBannerPicure() {
+    let url = `https://serysjohsewrcxkonnum.supabase.co/storage/v1/object/banners/${session.user_id}`;
+
+    let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'multipart/form-data',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        },
+        body: JSON.stringify({
+            path: bannerUrl
+        })
+    })
+    console.log(response)
+}
+
+function selectNewAvatarPicture(input) {
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        editAvatarContainer.style.backgroundImage = `url(${e.target.result})`;
+        avatarUrl = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+
+}
+
+function selectNewBannerPicture(input) {
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+        editBannerContainer.style.backgroundImage = `url(${e.target.result})`;
+        bannerUrl = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+}
+
 let openEditProfileDialog = () => {
     editProfileDialog.showModal();
     editBannerContainer.style.backgroundImage = `url(${bannerUrl})`;
