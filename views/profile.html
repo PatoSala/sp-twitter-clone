@@ -283,7 +283,6 @@
 
         userData = await fetchUserData(userId);
         userFollowers = userData[0].followers_count;
-        console.log(userData);
 
         if (userData.length > 0) {
             document.querySelector('h1').innerHTML = userData[0].username;

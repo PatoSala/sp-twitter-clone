@@ -201,3 +201,23 @@
 .hidden {
     display: none;
 }
+
+.mobile-tweet-btn {
+    width: 56px;
+    height: 56px;
+    background-color: rgb(29, 155, 240);
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 8px, rgba(101, 119, 134, 0.25) 0px 1px 3px 1px;
+ }
+
+ @media only screen and (max-width: 600px) {
+    .mobile-tweet-btn {
+        display: flex;
+    }
+ }

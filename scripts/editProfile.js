@@ -13,11 +13,6 @@ let avatarUrl = session.avatar_url;
 let username = session.username;
 let bio = session.bio;
 
-async function saveChanges() {
-    await uploadNewBannerPicure();
-    await uploadNewAvatarPicure();
-}
-
 async function uploadNewAvatarPicure() {
     let url = `https://serysjohsewrcxkonnum.supabase.co/storage/v1/object/avatars/${session.user_id}`;
 
@@ -51,6 +46,31 @@ async function uploadNewBannerPicure() {
     })
     console.log(response)
 }
+
+async function updateUsername() {
+    let url = `https://serysjohsewrcxkonnum.supabase.co/rest/v1/users?user_id=eq.${session.user_id}`;
+
+    let response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        },
+        body: JSON.stringify({
+            username: editUsername.value
+        })
+    })
+    console.log('USERNAME', response);
+}
+
+
+async function saveChanges() {
+    await updateUsername();
+    await uploadNewBannerPicure();
+    await uploadNewAvatarPicure();
+}
+
 
 function selectNewAvatarPicture(input) {
     let reader = new FileReader();

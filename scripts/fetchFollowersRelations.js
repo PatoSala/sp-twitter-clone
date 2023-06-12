@@ -11,6 +11,5 @@ async function fetchFollowersRelations() {
     });
     
     let jsonResponse = await response.json();
-    console.log(jsonResponse);
     return followers = jsonResponse;
 }
