@@ -89,7 +89,7 @@
 
   <div class="page-content">
 
-    <div class="header-desktop .home">
+    <div class="header-desktop home">
         <div class="header-content">
             <h1 class="home-title">Inicio</h1>
         </div>
@@ -149,6 +149,7 @@
 
     window.addEventListener('load', async  e => {
         if (session !== null) {
+            document.querySelector('.mobile-profile-btn').style.display = 'unset';
             document.querySelector('.mobile-profile-btn').style.backgroundImage = `url(${session.avatar_url})`;
         }
 
