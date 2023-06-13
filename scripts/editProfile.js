@@ -16,6 +16,9 @@ let bio = session.bio;
 async function uploadNewAvatarPicure() {
     let url = `https://serysjohsewrcxkonnum.supabase.co/storage/v1/object/avatars/${session.user_id}`;
 
+    let formData = new FormData();
+    formData.append('', avatarUrl, session.user_id);
+
     let response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -23,9 +26,7 @@ async function uploadNewAvatarPicure() {
             Authorization: 'Bearer ' + apiKey,
             apiKey: apiKey
         },
-        body: JSON.stringify({
-            path: avatarUrl
-        })
+        body: formData
     })
     console.log(response)
 }
@@ -65,19 +66,20 @@ async function updateUsername() {
 }
 
 
-async function saveChanges() {
-    await updateUsername();
-    await uploadNewBannerPicure();
-    await uploadNewAvatarPicure();
+function saveChanges() {
+    updateUsername();
+    uploadNewAvatarPicure();
+    uploadNewBannerPicure();
 }
 
 
 function selectNewAvatarPicture(input) {
-    let reader = new FileReader();
+    avatarUrl = input.files[0];
+    console.log(avatarUrl);
 
+    let reader = new FileReader();
     reader.onload = (e) => {
         editAvatarContainer.style.backgroundImage = `url(${e.target.result})`;
-        avatarUrl = e.target.result;
     }
     reader.readAsDataURL(input.files[0]);
 
