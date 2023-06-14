@@ -67,7 +67,9 @@ function tweetItemComponent(tweet, isLiked) {
                             </li>
 
                             <li>
-                                <i class="fa-regular fa-bookmark fa-lg"></i>
+                                <div class="icon-container">
+                                    <i class="fa-regular fa-bookmark fa-lg"></i>
+                                </div>
                             </li>
                         </ul>
                     </div>
