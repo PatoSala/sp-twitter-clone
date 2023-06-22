@@ -87,7 +87,8 @@ h1 {
         width: 100%;
     } */
 
-    /* .login-form input {
-        min-width: 100%
-    } */
+    body {
+        align-items: flex-start;
+        margin-top: 100px;
+    }
 }
