@@ -1,5 +1,18 @@
+@import url('https://fonts.cdnfonts.com/css/chirp-2');
+
+
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    font-family: 'Chirp';
+ }
+
 body {
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +26,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
 }
 
 .back-arrow-container {
@@ -29,7 +41,7 @@ h1 {
 }
 
 .login-form input {
-    width: 438px;
+    min-width: 438px;
     height: 60px;
     margin-top: 12px;
     border: 1px solid rgb(207, 217, 222);
@@ -63,4 +75,15 @@ h1 {
     display: inline;
     width: max-content;
     font-weight: 100;
+}
+
+
+@media only screen and (max-width: 414px) {
+    /* body {
+        width: 100%;
+    } */
+
+    .login-form input {
+        min-width: 100%
+    }
 }

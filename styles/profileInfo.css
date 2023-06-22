@@ -85,6 +85,7 @@
     padding-left: 16px;
     padding-right: 16px;
     margin-bottom: 16px;
+    word-wrap: break-word;
 }
 
 .profile-data .profile-username {
@@ -98,7 +99,7 @@
 }
 
 .profile-data .profile-bio {
-    color: rgb(207, 217, 222, 1);
+    color: #0F1419;
 }
 
 .profile-sections {

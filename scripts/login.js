@@ -20,6 +20,7 @@ async function logIn() {
         console.log('Error: ' + jsonResponse);
     } else {
         sessionStorage.setItem("session", JSON.stringify(jsonResponse[0]));
+        console.log(jsonResponse);
         location.href = "../index.html"
     }
     

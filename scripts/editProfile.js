@@ -65,11 +65,30 @@ async function updateUsername() {
     console.log('USERNAME', response);
 }
 
+async function updateBio() {
+    let url = `https://serysjohsewrcxkonnum.supabase.co/rest/v1/users?user_id=eq.${session.user_id}`;
 
-function saveChanges() {
-    updateUsername();
-    uploadNewAvatarPicure();
-    uploadNewBannerPicure();
+    let response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        },
+        body: JSON.stringify({
+            bio: editBio.value
+        })
+    })
+    console.log('BIO', response);
+}
+
+
+async function saveChanges() {
+    await updateUsername();
+    await updateBio();
+    /* uploadNewAvatarPicure();
+    uploadNewBannerPicure(); */
+    location.reload();
 }
 
 
@@ -96,11 +115,11 @@ function selectNewBannerPicture(input) {
 }
 
 let openEditProfileDialog = () => {
-    editProfileDialog.showModal();
+    editProfileDialog.showModal(); 
     editBannerContainer.style.backgroundImage = `url(${bannerUrl})`;
     editAvatarContainer.style.backgroundImage = `url(${avatarUrl})`;
-    editUsername.value = username;
-    editBio.value = bio;
+    editUsername.value = userData[0].username;
+    editBio.value = userData[0].bio;
 }
 
 let closeEditProfileDialog = () => {
