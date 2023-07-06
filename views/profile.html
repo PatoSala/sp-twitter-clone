@@ -104,7 +104,7 @@
             <p class="link-text">Perfil</p>
         </div>
 
-        <a href="">
+        <a href="./savedPosts.html">
             <div class="list-item-container">
                 <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 26.25px"><g><path d="M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z"></path></g></svg>
                 <p class="link-text">Guardados</p>
@@ -170,8 +170,16 @@
     </div>
 
     <ul class="profile-sections">
-        <li>
+        <li class="user-tweets" onclick="renderUserTweets()">
             Tweets
+        </li>
+
+        <li class="user-liked" onclick="renderLikedTweets()">
+            Me gusta
+        </li>
+
+        <li class="user-saved" onclick="renderSavedTweets()">
+            Guardados
         </li>
     </ul>
 
@@ -219,6 +227,8 @@
   <script src="../scripts/fetchAllUsers.js"></script>
   <script src="../scripts/fetchTweets.js"></script>
   <script src="../scripts/likeTweet.js"></script>
+  <script src="../scripts/fetchSavedPosts.js"></script>
+  <script src="../scripts/saveTweet.js"></script>
   <script src="../scripts/fetchLikes.js"></script>
   <script src="../scripts/renderTweets.js"></script>
 
@@ -232,9 +242,11 @@
   <script>
     let queryString = location.search;
     let params = new URLSearchParams(queryString);
-    let userId = params.get("userId");
-    let userData;
-    let userFollowers;  // keep track of users followers
+    let userId = params.get("userId");  // get user id from the url
+
+    let userData;   // user info
+    let userFollowers;  // keep track of user followers
+    let userFollowings; // keep track of accounts followed by the user
 
     let followBtn = document.querySelector('.follow-btn');
     let unfollowBtn = document.querySelector('.unfollow-btn');
@@ -280,8 +292,82 @@
         }
     }
 
+    // load profile sections logic
+    let userTweetsBtn = document.querySelector('.user-tweets');
+    let userLikedTweetsBtn = document.querySelector('.user-liked');
+    let userSaveTweetsBtn = document.querySelector('.user-saved');
+
+    async function renderUserTweets() {
+        tweetsList.innerHTML = `
+            <div class="spinner">
+                <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
+            </div>
+        `
+
+        await fetchAllUsers();
+        await fetchLikes();
+        await fetchSavedPosts();
+        await fetchTweets();
+        renderTweets(tweets, users);
+    }
+
+    async function renderLikedTweets() {
+        tweetsList.innerHTML = `
+            <div class="spinner">
+                <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
+            </div>
+        `
+
+        await fetchAllUsers();
+        await fetchLikes();
+        await fetchSavedPosts();
+
+        let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts?select=*';
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+                apiKey: apiKey
+            }
+        });
+
+        let jsonResponse = await response.json();
+        tweets = jsonResponse;
+        return renderTweets(tweets, users, true, false);
+    }
+
+    async function renderSavedTweets() {
+        tweetsList.innerHTML = `
+            <div class="spinner">
+                <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
+            </div>
+        `
+
+        await fetchAllUsers();
+        await fetchLikes();
+        await fetchSavedPosts();
+
+        let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts?select=*';
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+                apiKey: apiKey
+            }
+        });
+
+        let jsonResponse = await response.json();
+        tweets = jsonResponse;
+        return renderTweets(tweets, users, false, true);
+    }
+
+    // load profile sections logic ends
+
     window.addEventListener("load", async e => {
 
+        // show footer if user is not logged in
         if (session === null) {
             document.querySelector('footer').style.display = 'flex';
         }
@@ -289,6 +375,7 @@
         userData = await fetchUserData(userId);
         userFollowers = userData[0].followers_count;
 
+        // fill profile info
         if (userData.length > 0) {
             document.querySelector('h1').innerHTML = userData[0].username;
             document.querySelector('.profile-picture-container').innerHTML = `<img src="${userData[0].avatar_url}" width="100px"/>`
@@ -306,8 +393,9 @@
         await fetchAllUsers();
         await fetchTweets();
         await fetchFollowersRelations();
-        document.querySelector('.header-content').children[1].innerText = `${tweets.length} Tweets`
+        document.querySelector('.header-content').children[1].innerText = `${tweets.length} Tweets` // number of tweets posted by the user
         await fetchLikes();
+        await fetchSavedPosts();
         await fetchFollowersRelations();
         renderTweets(tweets, users);
 

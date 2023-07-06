@@ -1,7 +1,8 @@
 let tweetsList = document.querySelector(".tweets-list");
 let spinner = document.querySelector(".spinner");
 
-function renderTweets(tweets, users) {
+function renderTweets(tweets, users, onlyLikedPosts = false, onlySavedPosts = false) {
+    console.log('rendering!');
     let array = []; 
     
     for (let i = 0; i < tweets.length; i++) {
@@ -25,16 +26,38 @@ function renderTweets(tweets, users) {
     if (array.length > 0) {
         for (let i = 0; i < array.length; i++) {
             let isLiked = false;
+            let isSaved = false;
 
             if (session !== null) {
+
+                // match liked posts
                 for (let j = 0; j < likes.length; j++) {
                     if (likes[j].tweet_id === array[i].id && likes[j].user_id === session.user_id) {
                         isLiked = true;
                     }
                 }
+
+                // match savedPosts
+                for (let j = 0; j < savedPosts.length; j++) {
+                    if (savedPosts[j].tweet_id === array[i].id && savedPosts[j].user_id === session.user_id) {
+                        isSaved = true;
+                    }
+                }
             }
 
-            tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i], isLiked);
+            if (onlyLikedPosts) {
+                if (isLiked) {
+                    tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i], isLiked, isSaved);
+                }
+            }
+            else if (onlySavedPosts) {
+                if (isSaved) {
+                    tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i], isLiked, isSaved);
+                }
+            }
+            else {
+                tweetsList.innerHTML = tweetsList.innerHTML + tweetItemComponent(array[i], isLiked, isSaved);
+            }
         }
     } else {
         tweetsList.innerHTML = `<p style="align-self: center">No se encontraron tweets</p>`

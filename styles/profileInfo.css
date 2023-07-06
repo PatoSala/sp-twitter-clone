@@ -103,10 +103,23 @@
 }
 
 .profile-sections {
+    padding: 0;
     margin: 0;
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgb(239, 243, 244);
+}
+
+.user-tweets {
+    border-bottom: 4px solid rgb(29, 155, 240);;
+}
+
+.user-liked {
+
+}
+
+.user-saved {
+    
 }
 
 .profile-sections li {
@@ -115,7 +128,10 @@
     padding: 15px 15px;
     font-size: 15px;
     font-weight: bold;
-    border-bottom: 4px solid rgb(29, 155, 240);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-sections li:hover {
