@@ -1,7 +1,7 @@
 let likes;
 
 async function fetchLikes() {
-    let url = `https://serysjohsewrcxkonnum.supabase.co/rest/v1/likes?user_id=eq.${session.user_id}`;
+    let url = `https://serysjohsewrcxkonnum.supabase.co/rest/v1/likes?select=*`;
 
     let response = await fetch(url, {
         method: 'GET',

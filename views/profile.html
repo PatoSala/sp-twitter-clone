@@ -170,7 +170,7 @@
     </div>
 
     <ul class="profile-sections">
-        <li class="user-tweets" onclick="renderUserTweets()">
+        <li class="user-tweets focused" onclick="renderUserTweets()">
             Tweets
         </li>
 
@@ -293,11 +293,15 @@
     }
 
     // load profile sections logic
-    let userTweetsBtn = document.querySelector('.user-tweets');
-    let userLikedTweetsBtn = document.querySelector('.user-liked');
-    let userSaveTweetsBtn = document.querySelector('.user-saved');
+    const userTweetsBtn = document.querySelector('.user-tweets');
+    const userLikedTweetsBtn = document.querySelector('.user-liked');
+    const userSavedTweetsBtn = document.querySelector('.user-saved');
 
     async function renderUserTweets() {
+        userLikedTweetsBtn.classList.remove('focused');
+        userSavedTweetsBtn.classList.remove('focused');
+        userTweetsBtn.classList.add('focused');
+
         tweetsList.innerHTML = `
             <div class="spinner">
                 <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
@@ -312,6 +316,10 @@
     }
 
     async function renderLikedTweets() {
+        userSavedTweetsBtn.classList.remove('focused');
+        userTweetsBtn.classList.remove('focused');
+        userLikedTweetsBtn.classList.add('focused');
+
         tweetsList.innerHTML = `
             <div class="spinner">
                 <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
@@ -334,10 +342,13 @@
 
         let jsonResponse = await response.json();
         tweets = jsonResponse;
-        return renderTweets(tweets, users, true, false);
+        return renderTweets(tweets, users, true, false, userId);
     }
 
     async function renderSavedTweets() {
+        userTweetsBtn.classList.remove('focused');
+        userLikedTweetsBtn.classList.remove('focused');
+        userSavedTweetsBtn.classList.add('focused');
         tweetsList.innerHTML = `
             <div class="spinner">
                 <i class="fa-solid fa-circle-notch fa-spin fa-xl" style="color: rgb(29, 155, 240)"></i>
@@ -360,7 +371,7 @@
 
         let jsonResponse = await response.json();
         tweets = jsonResponse;
-        return renderTweets(tweets, users, false, true);
+        return renderTweets(tweets, users, false, true, userId);
     }
 
     // load profile sections logic ends
@@ -394,8 +405,8 @@
         await fetchTweets();
         await fetchFollowersRelations();
         document.querySelector('.header-content').children[1].innerText = `${tweets.length} Tweets` // number of tweets posted by the user
-        await fetchLikes();
-        await fetchSavedPosts();
+        await fetchLikes(userId);
+        await fetchSavedPosts(userId);
         await fetchFollowersRelations();
         renderTweets(tweets, users);
 

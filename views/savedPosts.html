@@ -161,7 +161,7 @@
         await fetchTweets();
         await fetchLikes();
         await fetchSavedPosts();
-        renderTweets(tweets, users, false, true);
+        renderTweets(tweets, users, false, true, session.user_id);
     });
 
   </script>

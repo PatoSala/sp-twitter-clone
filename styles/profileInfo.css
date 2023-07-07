@@ -110,16 +110,8 @@
     border-bottom: 1px solid rgb(239, 243, 244);
 }
 
-.user-tweets {
+.focused {
     border-bottom: 4px solid rgb(29, 155, 240);;
-}
-
-.user-liked {
-
-}
-
-.user-saved {
-    
 }
 
 .profile-sections li {
