@@ -27,7 +27,7 @@
 }
 
 .tweet-container a {
-    height: 48px;
+    height: max-content;
 }
 
 .tweet-container h4 {
@@ -52,6 +52,9 @@
     justify-content: center;
     overflow: hidden;
     box-sizing: border-box;
+}
+
+.tweet-owner {
 }
 
 .tweet-content {
@@ -80,6 +83,7 @@
     display: flex;
     list-style: none;
     margin: 0;
+    padding: 0;
     margin-top: 12px;
     font-size: 13px;
     justify-content: space-evenly;

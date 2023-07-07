@@ -52,7 +52,9 @@ function tweetItemComponent(tweet, isLiked, isSaved = false) {
                 </a>
                 <div class="tweet-content">
                     <div class="tweet-header">
-                        <h4 class="tweet-owner">${tweet.owner_metadata.username}</h4>
+                        <a class="tweet-owner" href="${location.href.includes('views') ? './' : './views/'}profile.html?userId=${tweet.owner_id}">
+                            <h4>${tweet.owner_metadata.username}</h4>
+                        </a>
                         <span class="twitter-blue-check">${tweet.owner_metadata.verified ? twitterBlueCheck : ``}</span>
                         <span class="creation-date">${tweet.created_at.slice(0, 10)}</span>
                     </div>

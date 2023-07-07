@@ -12,6 +12,7 @@ a {
    flex-direction: column;
    align-items: flex-start;
    gap: 16px;
+   padding: 0 8px;
  }
   
   .list-item-container {
@@ -26,13 +27,27 @@ a {
     border-radius: 100px;
     transition: 0.5s;
   }
+
+  .compose-tweet-btn {
+    width: 85%;
+    padding: 0;
+  }
+
+  .compose-tweet-btn svg {
+    display: none;
+   }
+
+   .compose-tweet-btn p {
+    margin: 0;
+   }
   
   .list-item-container:hover {
-    background-color: rgb(0, 0, 0, 0.03);
+    background-color: rgb(15, 20, 25, 0.1);
     transition: 0.5s;
   }
 
  .link-text {
+    font-size: 20px;
     margin-left: 25px
  }
 
@@ -47,6 +62,7 @@ a {
    .nav-links {
       width: 150px;
    }
+
  }
 
  @media only screen and (max-width: 1168px) {
@@ -69,5 +85,13 @@ a {
     .link-text {
       display: none;
     }
+
+    .compose-tweet-btn {
+      width: max-content;
+   }
+
+   .compose-tweet-btn svg {
+    display: unset;
+   }
 
  }

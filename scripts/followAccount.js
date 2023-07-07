@@ -1,3 +1,40 @@
+// update following_count at a users record
+async function updateFollowingCount(userId, type) {
+    let url = "https://serysjohsewrcxkonnum.supabase.co/rest/v1/users?user_id=eq." + userId;
+
+    // fetch number of accounts that user follows
+    let user = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        }
+    });
+
+    let jsonResponse = await user.json();
+    totalFollowing = jsonResponse[0].following_count;
+
+    if (type === 'increase') {
+        totalFollowing = totalFollowing + 1;
+    } else {
+        totalFollowing = totalFollowing - 1;
+    }
+
+    let response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + apiKey,
+            apiKey: apiKey
+        },
+        body: JSON.stringify({
+            following_count: totalFollowing 
+        })
+    });
+    return response;
+}
+
 // update followers_count column at a users record
 async function updateFollowersCount(userId, totalFollowers) {
     let url = "https://serysjohsewrcxkonnum.supabase.co/rest/v1/users?user_id=eq." + userId;
