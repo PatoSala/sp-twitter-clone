@@ -31,6 +31,8 @@ a {
   .compose-tweet-btn {
     width: 85%;
     padding: 0;
+    background-color: rgb(29, 155, 240);
+    color: white
   }
 
   .compose-tweet-btn svg {
@@ -95,3 +97,9 @@ a {
    }
 
  }
+
+ @media (hover: hover) and (pointer: fine) {
+  .compose-tweet-btn:hover {
+    background-color: rgb(26, 140, 216);
+   }
+}
