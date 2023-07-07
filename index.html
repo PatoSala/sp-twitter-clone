@@ -77,10 +77,10 @@
             <p class="link-text">Twittear</p>
         </div>
 
-        <!-- <div class="list-item-container">
+        <div class="list-item-container profile-btn">
              <div class="profile-pic"></div>
-             <p class="link-text">Usuario</p>
-        </div> -->
+             <p class="link-text"></p>
+        </div>
     </div>
     
   </div>
@@ -151,6 +151,8 @@
         if (session !== null) {
             document.querySelector('.mobile-profile-btn').style.display = 'unset';
             document.querySelector('.mobile-profile-btn').style.backgroundImage = `url(${session.avatar_url})`;
+            document.querySelector('.profile-pic').style.backgroundImage = `url(${session.avatar_url})`;
+            document.querySelector('.profile-btn').children[1].innerText = `${session.username}`;
         }
 
         if (session === null) {

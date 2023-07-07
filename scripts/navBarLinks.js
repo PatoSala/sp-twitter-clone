@@ -25,7 +25,8 @@ if (session == undefined) {
     navLinks.children[2].style.display = "none"     // profile
     navLinks.children[3].style.display = "none"     // saved
     navLinks.children[4].style.display = "none"     // close session
-    navLinks.children[navLinks.children.length - 1].style.display = "none"  // tweet button
+    navLinks.children[navLinks.children.length - 2].style.display = "none"  // profile button
+    navLinks.children[navLinks.children.length - 1].style.display = "none"  // profile button
     document.querySelector('.mobile-tweet-btn').style.display = 'none';
 }
 
