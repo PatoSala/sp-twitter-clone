@@ -32,16 +32,27 @@ a {
     width: 85%;
     padding: 0;
     background-color: rgb(29, 155, 240);
-    color: white
+    color: white;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   }
 
   .compose-tweet-btn svg {
     display: none;
    }
 
-   .compose-tweet-btn p {
+  .compose-tweet-btn p {
     margin: 0;
-   }
+  }
+
+  .profile-btn {
+    padding: 0 10px;
+  }
+
+  .profile-btn p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+  }
   
   .list-item-container:hover {
     background-color: rgb(15, 20, 25, 0.1);
