@@ -6,7 +6,7 @@ async function fetchTweets() {
     let params = new URLSearchParams(queryString);
     let userId = params.get("userId");
 
-    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts' + (userId !== null ? '?owner_id=eq.' + userId : '?select=*');
+    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/tweets' + (userId !== null ? '?owner_id=eq.' + userId : '?select=*');
 
     let response = await fetch(url, {
         method: 'GET',

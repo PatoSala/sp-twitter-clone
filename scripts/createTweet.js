@@ -13,7 +13,7 @@ async function createTweet() {
     } else if (tweetContent.value === '') {
         tweetContent.style.border = '1px solid red'
     } else {
-        let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts';
+        let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/tweets';
 
 
         let response = await fetch(url, {

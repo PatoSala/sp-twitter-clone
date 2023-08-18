@@ -14,7 +14,7 @@ function closeDropDownMenu(element) {
 
 async function deleteTweet(element) {
     let tweetId = element.id.replace('tweetId-', '');
-    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts?id=eq.' + tweetId;
+    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/tweets?id=eq.' + tweetId;
 
     let response = await fetch(url, {
         method: 'DELETE',

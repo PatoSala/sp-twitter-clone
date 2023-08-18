@@ -1,5 +1,5 @@
 async function deleteTweet(tweetId) {
-    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/twitts?id=eq.' + tweetId;
+    let url = 'https://serysjohsewrcxkonnum.supabase.co/rest/v1/tweets?id=eq.' + tweetId;
 
     let response = await fetch(url, {
         method: 'DELETE',
