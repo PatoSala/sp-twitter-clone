@@ -58,6 +58,7 @@ async function uploadNewAvatarPicure() {
     let response = await fetch(url, {
         method: 'PUT',
         headers: {
+            'Cache-Control': `max-age=0`,
             Authorization: 'Bearer ' + apiKey,
             apiKey: apiKey
         },
@@ -81,6 +82,7 @@ async function uploadNewBannerPicure() {
     let response = await fetch(url, {
         method: 'PUT',
         headers: {
+            'Cache-Control': `max-age=0`,
             Authorization: 'Bearer ' + apiKey,
             apiKey: apiKey
         },
